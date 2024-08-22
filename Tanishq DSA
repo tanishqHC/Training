@@ -1,0 +1,191 @@
+#__________________________________________________________LINKEDLIST____________________________________________________________________________________
+class linkedlist:
+    def __init__(self):
+        self.head = None
+    def add(self,data):
+        new_nd = node(data)
+        if self.head==None:
+            self.head=new_nd
+            return
+        last=self.head
+        while last.next:
+            last=last.next
+        last.next = new_nd
+    def delete(self,val):
+        curr = self.head
+        if curr is not None:
+            if curr.data == val:
+                self.head = curr.next
+                curr = None
+                return
+            previous = None
+            while curr is not None:
+                if curr.data==val:
+                    break
+                prev=curr
+                curr=curr.next
+            
+            if curr is None:
+                print('NOT FOUND')
+                return
+    
+            prev.next=curr.next
+            curr = None
+    def showll(self):
+        curr=self.head
+        if curr==None:
+            print("Empty LIST")
+
+        while curr:
+            print(curr.data,end='--')
+            curr= curr.next
+        print(None)
+
+#__________________________________________________NODE________________________________________________________________________________
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+#
+#___________________________________________________________________STACK___________________________________________________________________________
+class stack:
+    def __init__(self):
+        self.st=['bottom','mid','top']
+        #self.ln = len(self.st)
+    def push(self,val):
+        self.st.append(val)
+    def pop(self):
+        top = self.st[len(self.st)-1]
+        if (len(self.st)-1)>=0: 
+            self.st = self.st[0:len(self.st)-1]
+        else:
+            self.st=[]
+        return top
+    def showst(self):
+        return(self.st)
+#____________________________________________________________________QUEUE_______________________________________________________________
+class queue:
+    def __init__(self):
+        self.qu=[]
+    def enqu(self,val):
+        self.qu.append(val)
+    def dequ(self):
+        front = self.qu[0]
+        self.qu = self.qu[1:]
+        return self.qu
+    def showqu(self):
+        return(self.qu)
+
+#______________________________________________________MENU______________________________________________________________________
+
+def menu():
+    op = -1
+    while op!= 0:
+        print("\nWelcome to the DATA STRUCTURES\n\n")
+        print("For STACK press : 1","For Queue press : 2","For Linked List press : 3","For Exiting press : 0", sep="\n")
+        op = int(input("\nRESPONSE = "))
+        if op not in range(0,4):
+            print("\nPLEASE ENTER VALID RESPONSE\n")
+            continue
+        else:
+            if op == 1:
+                stmenu()
+            if op == 2:
+                qmenu()
+            if op == 3:
+                lmenu()
+            if op == 0:
+                print('EXITED')
+                exit()
+#______________________________________________________QMENU___________________________________________________________________________
+def qmenu():
+    op = -1
+    q=queue()
+    while op!= 0:
+        #2q=queue()
+       
+        print("\nQUEUE\n\n")
+        print("For Adding element press : 1","For Removing Ekement press : 2","For Viewing QUEUE press : 3","For Main Menu press : 4","For Exiting press : 0", sep="\n")
+        op = int(input("\nRESPONSE = "))
+       
+        if op not in range(0,5):
+            print("\nPLEASE ENTER VALID RESPONSE\n")
+            continue
+        else:
+            if op == 1:
+                val=input("Please enter value to be added-")
+                q.enqu(val)
+                print('Item added to queue')
+            if op == 2:
+                print("Following item has been removed from the queue-",q.dequ())
+            if op == 3:
+                print('Current Queue STATUS-',q.showqu())
+            if op == 4:
+                menu()
+            if op == 0:
+                print('EXITED')
+                exit()
+#______________________________________________________________SMENU______________________________________________________________________________________
+
+def stmenu():
+    op = -1
+    s=stack()
+    while op!= 0:
+        #2q=queue()
+       
+        print("\nSTACK\n\n")
+        print("For PUSHING element press : 1","For POPPING Element press : 2","For Viewing STACK STATUS press : 3","For Main Menu press : 4","For Exiting press : 0", sep="\n")
+        op = int(input("\nRESPONSE = "))
+       
+        if op not in range(0,5):
+            print("\nPLEASE ENTER VALID RESPONSE\n")
+            continue
+        else:
+            if op == 1:
+                val=input("Please enter value to be added-")
+                s.push(val)
+                print('Item added to STACK')
+            if op == 2:
+                print("Following item has been removed from the STACK-",s.pop())
+            if op == 3:
+                print('Current STACK STATUS-',s.showst())
+            if op == 4:
+                menu()
+            if op == 0:
+                print('EXITED')
+                exit()
+
+#_________________________________________________________LMENU____________________________________________________________________________________
+def lmenu():
+    op = -1
+    l=linkedlist()
+    while op!= 0:
+        #2q=queue()
+       
+        print("\nLINKEDLIST\n\n")
+        print("For ADDING NODE press : 1","For DELETING NODE press : 2","For Viewing LINKEDLIST STATUS press : 3","For Main Menu press : 4","For Exiting press : 0", sep="\n")
+        op = int(input("\nRESPONSE = "))
+       
+        if op not in range(0,5):
+            print("\nPLEASE ENTER VALID RESPONSE\n")
+            continue
+        else:
+            if op == 1:
+                val=input("Please enter value to be added-")
+                l.add(val)
+                print('Item added to STACK')
+            if op == 2:
+                val= input('Enter the node to be deleted-')
+                l.delete(val)
+                print(" Node has been deleted from the LINKEDLIST-")
+            if op == 3:
+                print('Current LINKEDLIST STATUS-')
+                l.showll()
+            if op == 4:
+                menu()
+            if op == 0:
+                print('EXITED')
+                exit()
+
+#___________________________________________________MAIN______________________________________________________________________________________
+menu()
