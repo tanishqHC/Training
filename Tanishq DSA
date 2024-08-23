@@ -102,7 +102,7 @@ def qmenu():
     op = -1
     q=queue()
     while op!= 0:
-        #2q=queue()
+        
        
         print("\nQUEUE\n\n")
         print("For Adding element press : 1","For Removing Ekement press : 2","For Viewing QUEUE press : 3","For Main Menu press : 4","For Exiting press : 0", sep="\n")
@@ -131,7 +131,6 @@ def stmenu():
     op = -1
     s=stack()
     while op!= 0:
-        #2q=queue()
        
         print("\nSTACK\n\n")
         print("For PUSHING element press : 1","For POPPING Element press : 2","For Viewing STACK STATUS press : 3","For Main Menu press : 4","For Exiting press : 0", sep="\n")
@@ -160,8 +159,7 @@ def lmenu():
     op = -1
     l=linkedlist()
     while op!= 0:
-        #2q=queue()
-       
+        
         print("\nLINKEDLIST\n\n")
         print("For ADDING NODE press : 1","For DELETING NODE press : 2","For Viewing LINKEDLIST STATUS press : 3","For Main Menu press : 4","For Exiting press : 0", sep="\n")
         op = int(input("\nRESPONSE = "))
